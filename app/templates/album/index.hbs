@@ -1,0 +1,28 @@
+<p>{{#link-to 'album.edit' this}}Edit this album{{/link-to}}</p>
+<br/>
+<div class="album-info">
+	<img src="{{artwork}}">
+	<h1>{{name}}</h1>
+	<h2>{{artist}}</h2>
+</div>
+
+<table class="album-listing">
+	<tbody>
+		{{#each song in songs}}
+			{{#song-row song-song player=player}}
+				<td class="song-track">
+					<span class="track-number">{{song.track}}</span>
+					{{#song-play-button class="play"}}►{{/song-play-button}}
+				</td>
+				<td class="song-name">{{song.name}}</td>
+				<td class="song-duration">{{format-duration song.duration}}</td>
+			{{/song-row}}
+		{{/each}}
+	</tbody>
+
+	<tfoot>
+		<tr>
+			<td class="total-duration" colspan="3">Total Time: {{format-duration totalDuration}}</td>
+		</tr>
+	</tfoot>
+</table>
