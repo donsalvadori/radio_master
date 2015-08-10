@@ -1,4 +1,4 @@
-inport DS from 'ember-data';
+import DS from 'ember-data';
 var attr = DS.attr,
 hasMany = DS.hasMany;
 
