@@ -5,8 +5,8 @@
 </div>
 
 <table class="album-listing">
-	{{#each song in songs}}
-		{{song-row song-song}}
+	{{#each songs as |song|}}
+		{{song-row song=song}}
 	{{/each}}
 	<tr>
 		<td class="total-duration" colspan='3'>Total Time: {{format-duration totalDuration}}</td>
