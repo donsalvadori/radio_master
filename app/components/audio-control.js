@@ -1,16 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	tagName: 'span',
-	className: ['play'],
+  tagName: 'span',
+  classNames: ['play'],
 
-	actions: {
-		pause: function(){
-			this.sendAction('pause');
-		},
+  actions: {
+    pause: function() {
+      this.sendAction('pause');
+    },
 
-		play: function(){
-			this.sendAction('play');
-		}
-	}
+    play: function() {
+      this.sendAction('play');
+    }
+  }
 });

@@ -3,20 +3,30 @@ var inject = Ember.inject;
 var computed = Ember.computed;
 
 export default Ember.Component.extend({
-	tagName: 'footer',
-	classNames: ['now-playing'],
+  tagName: 'footer',
+  classNames: ['now-playing'],
 
-	player: inject.service(),
+  showCurrentTime: true,
 
-	song: computed.readOnly('player.song'),
+  player: inject.service(),
 
-	actions: {
-		pause: function(){
-			this.get('player').pause();
-		},
+  song: computed.readOnly('player.song'),
 
-		resume: function(){
-			this.get('player').resume();
-		}
-	}
+  remainingTime: function() {
+    return this.get('song.duration') - this.get('player.currentTime');
+  }.property('song.duration', 'player.currentTime'),
+
+  actions: {
+    pause: function() {
+      this.get('player').pause();
+    },
+
+    resume: function() {
+      this.get('player').resume();
+    },
+
+    toggleTimeDisplay: function() {
+      this.toggleProperty('showCurrentTime');
+    }
+  }
 });

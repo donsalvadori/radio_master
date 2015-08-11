@@ -2,28 +2,28 @@ import Ember from 'ember';
 var inject = Ember.inject;
 
 export default Ember.Component.extend({
-	tagName: 'tr',
-	classNameBindings: ['isCurrentSong'],
-	
-	song: null,
+  tagName: 'tr',
+  classNameBindings: ['isCurrentSong'],
 
-	player: inject.service(),
+  song: null,
 
-	actions: {
-		play: function(){
-			this.get('player').play(this.get('song'));
-		},
+  player: inject.service(),
 
-		pause: function (){
-			this.get('player').pause();
-		}
-	},
+  actions: {
+    play: function() {
+      this.get('player').play(this.get('song'));
+    },
 
-	isCurrentSong: function(){
-		return this.get('player.song') === this.get('song');
-	}.property('player.song','song'),
+    pause: function() {
+      this.get('player').pause();
+    }
+  },
 
-	isPlaying: function(){
-		return this.get('isCurrentSong') && this.get('player.isPlaying');
-	}.property('isCurrentSong', 'player.isPlaying')
+  isCurrentSong: function() {
+    return this.get('player.song') === this.get('song');
+  }.property('player.song', 'song'),
+
+  isPlaying: function() {
+    return this.get('isCurrentSong') && this.get('player.isPlaying');
+  }.property('isCurrentSong', 'player.isPlaying')
 });
